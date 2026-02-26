@@ -1,0 +1,503 @@
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --win-gray:       #c0c0c0;
+  --win-dark-gray:  #808080;
+  --win-white:      #ffffff;
+  --win-black:      #000000;
+  --win-navy:       #000080;
+  --win-teal:       #008080;
+  --win-active-title: linear-gradient(to right, #000080, #1084d0);
+  --win-inactive-title: linear-gradient(to right, #808080, #b0b0b0);
+
+  /* Bevelled border helpers */
+  --raised: inset -1px -1px 0 #000, inset 1px 1px 0 #fff,
+            inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+  --sunken: inset 1px 1px 0 #000, inset -1px -1px 0 #fff,
+            inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
+  font-size: 11px;
+  background: var(--win-teal);
+  cursor: default;
+  user-select: none;
+}
+
+.hidden { display: none !important; }
+
+/* ── Wallpaper / Desktop ──────────────────────────────────── */
+#desktop {
+  position: fixed;
+  inset: 0 0 28px 0;
+  background-color: #008080;
+  background-image:
+    /* Subtle scanline texture */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,0.03) 3px,
+      rgba(0,0,0,0.03) 4px
+    ),
+    /* Classic Windows 95 hills SVG as data URI background */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%234aa8d8'/%3E%3Cstop offset='1' stop-color='%2387ceeb'/%3E%3C/linearGradient%3E%3ClinearGradient id='hill1' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2356a832'/%3E%3Cstop offset='1' stop-color='%23388a1a'/%3E%3C/linearGradient%3E%3ClinearGradient id='hill2' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2366bb3c'/%3E%3Cstop offset='1' stop-color='%2344961e'/%3E%3C/linearGradient%3E%3ClinearGradient id='ground' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2378c83e'/%3E%3Cstop offset='1' stop-color='%2350a020'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23sky)'/%3E%3Cellipse cx='80' cy='200' rx='150' ry='80' fill='url(%23hill1)'/%3E%3Cellipse cx='320' cy='210' rx='180' ry='90' fill='url(%23hill2)'/%3E%3Cellipse cx='200' cy='230' rx='300' ry='100' fill='url(%23ground)'/%3E%3Ccircle cx='80' cy='60' r='30' fill='%23fff' opacity='0.8'/%3E%3Cellipse cx='110' cy='55' rx='40' ry='22' fill='%23fff' opacity='0.9'/%3E%3Ccircle cx='140' cy='62' r='22' fill='%23fff' opacity='0.7'/%3E%3Ccircle cx='280' cy='45' r='20' fill='%23fff' opacity='0.7'/%3E%3Cellipse cx='310' cy='40' rx='30' ry='16' fill='%23fff' opacity='0.85'/%3E%3Ccircle cx='335' cy='47' r='16' fill='%23fff' opacity='0.7'/%3E%3C/svg%3E");
+  background-size: auto, cover;
+  background-position: top left, center center;
+}
+
+/* ── Desktop Icons ────────────────────────────────────────── */
+.desktop-icon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 72px;
+  padding: 4px;
+  gap: 3px;
+  cursor: pointer;
+}
+.desktop-icon:nth-child(1) { left: 10px; top: 10px; }
+.desktop-icon:nth-child(2) { left: 10px; top: 90px; }
+.desktop-icon:nth-child(3) { left: 10px; top: 170px; }
+.desktop-icon:nth-child(4) { left: 10px; top: 250px; }
+
+.desktop-icon .icon-img {
+  width: 32px; height: 32px;
+}
+.desktop-icon .icon-img svg { width: 100%; height: 100%; }
+.desktop-icon span {
+  text-align: center;
+  color: #fff;
+  font-size: 11px;
+  text-shadow: 1px 1px 1px #000;
+  line-height: 1.2;
+  word-break: break-word;
+}
+.desktop-icon:hover span {
+  background: var(--win-navy);
+  outline: 1px dotted #fff;
+}
+
+/* ── Taskbar ──────────────────────────────────────────────── */
+#taskbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 28px;
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  display: flex;
+  align-items: center;
+  padding: 2px 3px;
+  gap: 3px;
+  z-index: 9000;
+}
+
+#taskbar-divider {
+  width: 2px; height: 22px;
+  box-shadow: inset 1px 0 0 #fff, inset -1px 0 0 #808080;
+  margin: 0 2px;
+}
+
+#open-windows {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* Start Button */
+#start-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px 1px 4px;
+  height: 22px;
+  background: var(--win-gray);
+  border: none;
+  box-shadow: var(--raised);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+#start-btn:active,
+#start-btn.active {
+  box-shadow: var(--sunken);
+  padding: 2px 5px 0px 5px;
+}
+.start-logo {
+  width: 16px; height: 16px;
+  image-rendering: pixelated;
+}
+
+/* Taskbar window buttons */
+.taskbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 100px;
+  max-width: 160px;
+  height: 22px;
+  padding: 1px 6px;
+  background: var(--win-gray);
+  border: none;
+  box-shadow: var(--raised);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.taskbar-btn:active,
+.taskbar-btn.active {
+  box-shadow: var(--sunken);
+}
+
+/* System Tray */
+#system-tray {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px;
+  height: 22px;
+  box-shadow: var(--sunken);
+  background: var(--win-gray);
+}
+.tray-icon { font-size: 14px; cursor: pointer; }
+#clock {
+  font-size: 11px;
+  min-width: 44px;
+  text-align: center;
+}
+
+/* ── Start Menu ───────────────────────────────────────────── */
+#start-menu {
+  position: fixed;
+  bottom: 28px;
+  left: 0;
+  width: 200px;
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  display: flex;
+  flex-direction: row;
+  z-index: 9500;
+}
+
+#start-menu-sidebar {
+  width: 22px;
+  background: linear-gradient(to top, #000080, #808080);
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+#start-menu-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+}
+
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 8px;
+  cursor: pointer;
+}
+.start-item:hover {
+  background: var(--win-navy);
+  color: #fff;
+}
+.start-item-icon { font-size: 16px; width: 20px; text-align: center; }
+.start-item-text {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.start-separator {
+  height: 1px;
+  margin: 3px 4px;
+  background: var(--win-dark-gray);
+  box-shadow: 0 1px 0 #fff;
+}
+
+/* ── Windows ──────────────────────────────────────────────── */
+.window {
+  position: absolute;
+  min-width: 280px;
+  min-height: 180px;
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  resize: both;
+  overflow: hidden;
+}
+.window.maximized {
+  position: fixed !important;
+  left: 0 !important; top: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - 28px) !important;
+  resize: none;
+}
+.window.focused { z-index: 500; }
+
+/* Title Bar */
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 18px;
+  padding: 1px 2px;
+  background: var(--win-active-title);
+  cursor: move;
+  flex-shrink: 0;
+}
+.window:not(.focused) .title-bar {
+  background: var(--win-inactive-title);
+}
+.title-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.title-icon { font-size: 12px; }
+
+.title-bar-buttons {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.win-btn {
+  width: 16px; height: 14px;
+  background: var(--win-gray);
+  border: none;
+  box-shadow: var(--raised);
+  font-size: 9px;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+.win-btn:active { box-shadow: var(--sunken); }
+.close-btn { font-size: 10px; font-weight: bold; }
+
+/* Menu Bar */
+.menu-bar {
+  display: flex;
+  gap: 0;
+  padding: 1px 2px;
+  font-size: 11px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--win-dark-gray);
+}
+.menu-bar span {
+  padding: 1px 6px;
+  cursor: pointer;
+}
+.menu-bar span:hover {
+  background: var(--win-navy);
+  color: #fff;
+}
+
+/* Window Content */
+.window-content {
+  flex: 1;
+  background: #fff;
+  box-shadow: var(--sunken);
+  overflow: auto;
+  margin: 2px;
+}
+
+/* Notepad textarea */
+.notepad-content { margin: 0; }
+.notepad-content textarea {
+  width: 100%; height: 100%;
+  min-height: 200px;
+  border: none;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  padding: 4px;
+  resize: none;
+  background: #fff;
+  cursor: text;
+  user-select: text;
+}
+
+/* File Grid (My Computer) */
+.file-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 12px;
+}
+.file-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 60px;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+}
+.file-item:hover { background: rgba(0,0,128,0.15); }
+.file-icon { font-size: 28px; }
+
+/* File List (Explorer) */
+.file-list { padding: 4px; }
+.file-list-item {
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.file-list-item:hover {
+  background: var(--win-navy);
+  color: #fff;
+}
+
+/* Status Bar */
+.status-bar {
+  padding: 1px 4px;
+  font-size: 11px;
+  box-shadow: var(--sunken);
+  margin: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Dialogs ──────────────────────────────────────────────── */
+#shutdown-overlay,
+#run-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.win-dialog {
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  min-width: 320px;
+}
+
+.dialog-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  font-size: 11px;
+}
+.dialog-icon { font-size: 48px; }
+.dialog-text { flex: 1; }
+.dialog-text p { margin-bottom: 10px; }
+.dialog-radio {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dialog-radio label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px 12px;
+  border-top: 1px solid var(--win-dark-gray);
+}
+.dialog-btn {
+  min-width: 72px;
+  height: 23px;
+  padding: 0 12px;
+  background: var(--win-gray);
+  border: none;
+  box-shadow: var(--raised);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+.dialog-btn:active { box-shadow: var(--sunken); }
+.dialog-btn:first-child { outline: 1px solid #000; }
+
+.win-input {
+  height: 20px;
+  border: none;
+  box-shadow: var(--sunken);
+  background: #fff;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 1px 3px;
+  user-select: text;
+}
+
+/* ── BSOD ─────────────────────────────────────────────────── */
+#bsod {
+  position: fixed;
+  inset: 0;
+  background: #0000aa;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.bsod-inner {
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track {
+  background: var(--win-gray);
+  box-shadow: var(--sunken);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  min-height: 20px;
+}
+::-webkit-scrollbar-button {
+  background: var(--win-gray);
+  box-shadow: var(--raised);
+  height: 16px; width: 16px;
+  display: block;
+}
