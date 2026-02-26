@@ -1,95 +1,176 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 50" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
 
-  <!-- Sky (dark top → lighter bottom) -->
-  <rect x="0"  y="0"  width="80" height="10" fill="#1e3c98"/>
-  <rect x="0"  y="10" width="80" height="10" fill="#2850b0"/>
-  <rect x="0"  y="20" width="80" height="10" fill="#3060c0"/>
-  <rect x="0"  y="30" width="80" height="10" fill="#4070c8"/>
-  <rect x="0"  y="40" width="80" height="10" fill="#4878d0"/>
+    <!-- Sky gradient: warm pink → soft lavender → dreamy blue → mint -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffd0e8"/>
+      <stop offset="28%"  stop-color="#e8ccff"/>
+      <stop offset="60%"  stop-color="#c8e0ff"/>
+      <stop offset="100%" stop-color="#c0f8ec"/>
+    </linearGradient>
 
-  <!-- Pixel sun (cross shape) -->
-  <rect x="63" y="4"  width="4" height="8" fill="#f8d020"/>
-  <rect x="61" y="6"  width="8" height="4" fill="#f8d020"/>
-  <!-- Sun glow -->
-  <rect x="64" y="5"  width="2" height="6" fill="#fff880"/>
-  <rect x="62" y="7"  width="6" height="2" fill="#fff880"/>
+    <!-- Soft glowing blobs in the sky -->
+    <radialGradient id="glow1" cx="22%" cy="28%" r="38%">
+      <stop offset="0%" stop-color="#ffc4dc" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffc4dc" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="22%" r="36%">
+      <stop offset="0%" stop-color="#dcc4ff" stop-opacity="0.50"/>
+      <stop offset="100%" stop-color="#dcc4ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="55%" cy="70%" r="30%">
+      <stop offset="0%" stop-color="#c4f0dc" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#c4f0dc" stop-opacity="0"/>
+    </radialGradient>
 
-  <!-- Cloud 1 (chunky pixel blocks) -->
-  <rect x="8"  y="7"  width="2" height="2" fill="#ccd8f8"/>
-  <rect x="8"  y="9"  width="14" height="2" fill="#e8eeff"/>
-  <rect x="6"  y="11" width="18" height="4" fill="#e8eeff"/>
-  <rect x="10" y="7"  width="6"  height="2" fill="#e8eeff"/>
-  <rect x="13" y="5"  width="4"  height="2" fill="#e8eeff"/>
-  <!-- Cloud 1 shadow -->
-  <rect x="7"  y="15" width="16" height="2" fill="#b0c0e8"/>
+    <!-- Hill gradients -->
+    <linearGradient id="hillBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e8c8"/>
+      <stop offset="100%" stop-color="#90d8b0"/>
+    </linearGradient>
+    <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d0f4e4"/>
+      <stop offset="100%" stop-color="#b4eccc"/>
+    </linearGradient>
 
-  <!-- Cloud 2 -->
-  <rect x="44" y="12" width="10" height="2" fill="#d8e4f8"/>
-  <rect x="42" y="14" width="14" height="4" fill="#d8e4f8"/>
-  <rect x="46" y="10" width="6"  height="2" fill="#d8e4f8"/>
-  <!-- Cloud 2 shadow -->
-  <rect x="43" y="18" width="12" height="1" fill="#a8b8e0"/>
+    <!-- Blur filters for clouds and rainbow -->
+    <filter id="cloudBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="rainbowBlur" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="softGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
 
-  <!-- Pixel birds -->
-  <rect x="28" y="9"  width="2"  height="1" fill="#102888"/>
-  <rect x="32" y="7"  width="2"  height="1" fill="#102888"/>
-  <rect x="52" y="14" width="2"  height="1" fill="#102888"/>
+  </defs>
 
-  <!-- ── Back hills (dark green, staircase edges) ── -->
-  <!-- Fill base -->
-  <rect x="0"  y="34" width="80" height="16" fill="#1a5c0e"/>
+  <!-- ── Sky ───────────────────────────────────────────────── -->
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <rect width="800" height="500" fill="url(#glow1)"/>
+  <rect width="800" height="500" fill="url(#glow2)"/>
+  <rect width="800" height="500" fill="url(#glow3)"/>
 
-  <!-- Left back hill staircase -->
-  <rect x="0"  y="32" width="26" height="2" fill="#1a5c0e"/>
-  <rect x="0"  y="30" width="18" height="2" fill="#1a5c0e"/>
-  <rect x="0"  y="28" width="12" height="2" fill="#1a5c0e"/>
-  <rect x="0"  y="26" width="7"  height="2" fill="#1a5c0e"/>
-  <rect x="0"  y="24" width="3"  height="2" fill="#1a5c0e"/>
+  <!-- ── Rainbow (arcs centered at 400, 620) ───────────────── -->
+  <!-- Outermost: rose pink -->
+  <path d="M -20 620 A 420 420 0 0 1 820 620"
+        fill="none" stroke="#ffaac8" stroke-width="30" stroke-opacity="0.42"
+        filter="url(#rainbowBlur)"/>
+  <!-- Peach -->
+  <path d="M   8 620 A 392 392 0 0 1 792 620"
+        fill="none" stroke="#ffcc98" stroke-width="28" stroke-opacity="0.40"
+        filter="url(#rainbowBlur)"/>
+  <!-- Lemon -->
+  <path d="M  36 620 A 364 364 0 0 1 764 620"
+        fill="none" stroke="#ffeb90" stroke-width="28" stroke-opacity="0.40"
+        filter="url(#rainbowBlur)"/>
+  <!-- Mint -->
+  <path d="M  64 620 A 336 336 0 0 1 736 620"
+        fill="none" stroke="#a0f0b0" stroke-width="28" stroke-opacity="0.40"
+        filter="url(#rainbowBlur)"/>
+  <!-- Sky blue -->
+  <path d="M  92 620 A 308 308 0 0 1 708 620"
+        fill="none" stroke="#90d4ff" stroke-width="28" stroke-opacity="0.42"
+        filter="url(#rainbowBlur)"/>
+  <!-- Lavender -->
+  <path d="M 120 620 A 280 280 0 0 1 680 620"
+        fill="none" stroke="#c8a4ff" stroke-width="26" stroke-opacity="0.40"
+        filter="url(#rainbowBlur)"/>
+  <!-- Inner rose -->
+  <path d="M 148 620 A 252 252 0 0 1 652 620"
+        fill="none" stroke="#ffa4d8" stroke-width="22" stroke-opacity="0.36"
+        filter="url(#rainbowBlur)"/>
 
-  <!-- Right back hill staircase -->
-  <rect x="54" y="32" width="26" height="2" fill="#1a5c0e"/>
-  <rect x="60" y="30" width="20" height="2" fill="#1a5c0e"/>
-  <rect x="65" y="28" width="15" height="2" fill="#1a5c0e"/>
-  <rect x="69" y="26" width="11" height="2" fill="#1a5c0e"/>
-  <rect x="73" y="24" width="7"  height="2" fill="#1a5c0e"/>
-  <rect x="76" y="22" width="4"  height="2" fill="#1a5c0e"/>
+  <!-- ── Cloud 1 — large, left ─────────────────────────────── -->
+  <g filter="url(#cloudBlur)" opacity="0.90">
+    <ellipse cx="155" cy="98"  rx="92"  ry="40"  fill="#fff"/>
+    <ellipse cx="106" cy="116" rx="70"  ry="33"  fill="#fff"/>
+    <ellipse cx="210" cy="116" rx="70"  ry="33"  fill="#fff"/>
+    <ellipse cx="142" cy="92"  rx="52"  ry="30"  fill="#fff"/>
+    <ellipse cx="188" cy="88"  rx="46"  ry="28"  fill="#fff"/>
+    <ellipse cx="157" cy="126" rx="92"  ry="35"  fill="#fff"/>
+  </g>
+  <!-- Cloud 1 bright core -->
+  <ellipse cx="155" cy="102" rx="56" ry="22" fill="white" opacity="0.38"/>
 
-  <!-- Hill highlight (top edge row) -->
-  <rect x="0"  y="34" width="80" height="1" fill="#2a8018"/>
-  <rect x="0"  y="32" width="26" height="1" fill="#2a8018"/>
-  <rect x="54" y="32" width="26" height="1" fill="#2a8018"/>
+  <!-- ── Cloud 2 — medium, right ───────────────────────────── -->
+  <g filter="url(#cloudBlur)" opacity="0.84">
+    <ellipse cx="624" cy="70"  rx="78"  ry="33"  fill="#fff"/>
+    <ellipse cx="577" cy="84"  rx="57"  ry="28"  fill="#fff"/>
+    <ellipse cx="672" cy="82"  rx="57"  ry="28"  fill="#fff"/>
+    <ellipse cx="608" cy="64"  rx="42"  ry="26"  fill="#fff"/>
+    <ellipse cx="644" cy="60"  rx="36"  ry="24"  fill="#fff"/>
+    <ellipse cx="624" cy="94"  rx="78"  ry="30"  fill="#fff"/>
+  </g>
 
-  <!-- ── Front hill (bright green, staircase) ── -->
-  <rect x="0"  y="42" width="80" height="8" fill="#2ea016"/>
+  <!-- ── Cloud 3 — wispy, center ───────────────────────────── -->
+  <g filter="url(#cloudBlur)" opacity="0.72">
+    <ellipse cx="412" cy="138" rx="58"  ry="22"  fill="#fff"/>
+    <ellipse cx="374" cy="148" rx="42"  ry="20"  fill="#fff"/>
+    <ellipse cx="452" cy="146" rx="42"  ry="20"  fill="#fff"/>
+    <ellipse cx="412" cy="154" rx="58"  ry="20"  fill="#fff"/>
+  </g>
 
-  <!-- Front hill staircase steps -->
-  <rect x="0"  y="40" width="80" height="2" fill="#2ea016"/>
-  <rect x="6"  y="38" width="68" height="2" fill="#2ea016"/>
-  <rect x="14" y="36" width="52" height="2" fill="#2ea016"/>
-  <rect x="22" y="34" width="36" height="2" fill="#2ea016"/>
-  <rect x="28" y="32" width="24" height="2" fill="#2ea016"/>
-  <rect x="32" y="30" width="16" height="2" fill="#2ea016"/>
-  <rect x="36" y="28" width="8"  height="2" fill="#2ea016"/>
-  <rect x="38" y="26" width="4"  height="2" fill="#2ea016"/>
+  <!-- ── Sparkle stars ─────────────────────────────────────── -->
+  <!-- Sparkle 1 — golden yellow, upper right -->
+  <g filter="url(#softGlow)" opacity="0.92">
+    <line x1="522" y1="44" x2="522" y2="58" stroke="#ffe070" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="515" y1="51" x2="529" y2="51" stroke="#ffe070" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="517" y1="46" x2="527" y2="56" stroke="#ffe070" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="517" y1="56" x2="527" y2="46" stroke="#ffe070" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+  <!-- Sparkle 2 — pink, upper left -->
+  <g filter="url(#softGlow)" opacity="0.88">
+    <line x1="96"  y1="42" x2="96"  y2="54" stroke="#ffb0d0" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="90"  y1="48" x2="102" y2="48" stroke="#ffb0d0" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="92"  y1="44" x2="100" y2="52" stroke="#ffb0d0" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="92"  y1="52" x2="100" y2="44" stroke="#ffb0d0" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+  <!-- Sparkle 3 — lavender, upper right area -->
+  <g filter="url(#softGlow)" opacity="0.85">
+    <line x1="686" y1="34" x2="686" y2="46" stroke="#d4a8ff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="680" y1="40" x2="692" y2="40" stroke="#d4a8ff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="682" y1="36" x2="690" y2="44" stroke="#d4a8ff" stroke-width="1.3" stroke-linecap="round"/>
+    <line x1="682" y1="44" x2="690" y2="36" stroke="#d4a8ff" stroke-width="1.3" stroke-linecap="round"/>
+  </g>
+  <!-- Sparkle 4 — mint, mid left -->
+  <g filter="url(#softGlow)" opacity="0.80">
+    <line x1="264" y1="54" x2="264" y2="64" stroke="#80f0c0" stroke-width="2.0" stroke-linecap="round"/>
+    <line x1="259" y1="59" x2="269" y2="59" stroke="#80f0c0" stroke-width="2.0" stroke-linecap="round"/>
+  </g>
+  <!-- Small floating dots -->
+  <circle cx="344" cy="40" r="3"   fill="#ffe8c0" opacity="0.85"/>
+  <circle cx="584" cy="26" r="2.5" fill="#e8c0ff" opacity="0.80"/>
+  <circle cx="188" cy="36" r="2.5" fill="#c0e8ff" opacity="0.78"/>
+  <circle cx="738" cy="56" r="3"   fill="#ffd0e8" opacity="0.80"/>
+  <circle cx="454" cy="28" r="2"   fill="#c0ffe8" opacity="0.75"/>
+  <circle cx="310" cy="20" r="1.8" fill="#ffc8e0" opacity="0.70"/>
+  <circle cx="670" cy="18" r="2"   fill="#c8d8ff" opacity="0.72"/>
 
-  <!-- Front hill top highlight -->
-  <rect x="0"  y="40" width="80" height="1" fill="#50d030"/>
-  <rect x="6"  y="38" width="68" height="1" fill="#50d030"/>
+  <!-- ── Hills — back ──────────────────────────────────────── -->
+  <!-- Distant rolling hills using ellipses -->
+  <ellipse cx="190" cy="530" rx="290" ry="130" fill="url(#hillBack)" opacity="0.52"/>
+  <ellipse cx="640" cy="538" rx="270" ry="125" fill="url(#hillBack)" opacity="0.48"/>
+  <ellipse cx="420" cy="526" rx="220" ry="110" fill="url(#hillBack)" opacity="0.35"/>
 
-  <!-- Ground shadow band at bottom -->
-  <rect x="0"  y="47" width="80" height="3" fill="#147a0a"/>
+  <!-- ── Hill — front, smooth bezier ──────────────────────── -->
+  <path d="M -20 510
+           C  80 448, 182 430, 318 455
+           C 445 478, 558 445, 700 430
+           C 772 423, 822 436, 830 460
+           L 830 520 L -20 520 Z"
+        fill="url(#hillFront)" opacity="0.88"/>
+  <!-- Front hill edge highlight -->
+  <path d="M -20 510
+           C  80 448, 182 430, 318 455
+           C 445 478, 558 445, 700 430
+           C 772 423, 822 436, 830 460"
+        fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="3"/>
 
-  <!-- Small pixel flowers/details on front hill -->
-  <rect x="12" y="41" width="2" height="2" fill="#f83838"/>
-  <rect x="11" y="40" width="4" height="1" fill="#f83838"/>
-  <rect x="12" y="43" width="2" height="2" fill="#288010"/>
-
-  <rect x="55" y="42" width="2" height="2" fill="#f8e020"/>
-  <rect x="54" y="41" width="4" height="1" fill="#f8e020"/>
-  <rect x="55" y="44" width="2" height="2" fill="#288010"/>
-
-  <rect x="33" y="43" width="2" height="2" fill="#f870f0"/>
-  <rect x="32" y="42" width="4" height="1" fill="#f870f0"/>
-  <rect x="33" y="45" width="2" height="2" fill="#288010"/>
+  <!-- ── Ground base ───────────────────────────────────────── -->
+  <rect x="0" y="478" width="800" height="22" fill="#c8f4e0" opacity="0.70"/>
+  <!-- Ground highlight -->
+  <rect x="0" y="478" width="800" height="4"  fill="rgba(255,255,255,0.30)"/>
 
 </svg>

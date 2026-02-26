@@ -6,7 +6,7 @@
   <title>Windows 95</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,117 +15,121 @@
   <div id="desktop">
 
     <!-- Desktop Icons -->
-    <!-- My Computer — pixel art monitor on 16×16 grid -->
+    <!-- My Computer — pastel pixel art monitor on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('mycomputer')">
       <div class="icon-img">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-          <!-- Monitor body -->
-          <rect x="1" y="1" width="14" height="10" fill="#808080"/>
-          <!-- Screen bezel -->
-          <rect x="2" y="2" width="12" height="8"  fill="#404040"/>
-          <!-- Screen -->
-          <rect x="3" y="3" width="10" height="6"  fill="#0000a8"/>
-          <!-- Screen scanline highlight -->
-          <rect x="3" y="3" width="10" height="1"  fill="#4040c8"/>
-          <rect x="3" y="5" width="10" height="1"  fill="#3030b8"/>
-          <!-- Power light -->
-          <rect x="12" y="9" width="2" height="1"  fill="#00e800"/>
-          <!-- Monitor top highlight -->
-          <rect x="1" y="1" width="14" height="1"  fill="#c0c0c0"/>
-          <rect x="1" y="1" width="1"  height="10" fill="#c0c0c0"/>
-          <!-- Monitor shadow -->
-          <rect x="1" y="10" width="14" height="1" fill="#404040"/>
-          <rect x="14" y="1" width="1"  height="10" fill="#404040"/>
-          <!-- Stand neck -->
-          <rect x="6" y="11" width="4" height="2"  fill="#808080"/>
-          <!-- Stand base -->
-          <rect x="4" y="13" width="8" height="2"  fill="#c0c0c0"/>
-          <rect x="4" y="13" width="8" height="1"  fill="#dfdfdf"/>
-          <rect x="4" y="14" width="8" height="1"  fill="#808080"/>
+          <!-- Monitor body: soft lavender -->
+          <rect x="1" y="1" width="14" height="10" fill="#c8b8f8"/>
+          <!-- Screen bezel: deep purple -->
+          <rect x="2" y="2" width="12" height="8"  fill="#6050b0"/>
+          <!-- Screen: gradient blue-purple -->
+          <rect x="3" y="3" width="10" height="6"  fill="#7060d0"/>
+          <!-- Screen highlight bands -->
+          <rect x="3" y="3" width="10" height="1"  fill="#a090e8"/>
+          <rect x="3" y="5" width="10" height="1"  fill="#8878d8"/>
+          <!-- Cute pink reflection in corner -->
+          <rect x="3" y="3" width="3"  height="2"  fill="#c0b0ff"/>
+          <!-- Power light: mint green -->
+          <rect x="12" y="9" width="2"  height="1" fill="#80ffa0"/>
+          <!-- Monitor highlight: pale lavender -->
+          <rect x="1" y="1" width="14" height="1"  fill="#e8e0ff"/>
+          <rect x="1" y="1" width="1"  height="10" fill="#e8e0ff"/>
+          <!-- Monitor shadow: mid purple -->
+          <rect x="1"  y="10" width="14" height="1" fill="#9080d0"/>
+          <rect x="14" y="1"  width="1"  height="10" fill="#9080d0"/>
+          <!-- Stand neck: lavender -->
+          <rect x="6" y="11" width="4"  height="2" fill="#b8a8e8"/>
+          <!-- Stand base: light lavender -->
+          <rect x="4" y="13" width="8"  height="2" fill="#d0c8f4"/>
+          <rect x="4" y="13" width="8"  height="1" fill="#e0d8ff"/>
+          <rect x="4" y="14" width="8"  height="1" fill="#a898d8"/>
         </svg>
       </div>
       <span>My Computer</span>
     </div>
 
-    <!-- Recycle Bin — pixel art bin on 16×16 grid -->
+    <!-- Recycle Bin — pastel mint pixel art bin on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('recycle')">
       <div class="icon-img">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-          <!-- Bin body -->
-          <rect x="2" y="6"  width="12" height="9"  fill="#808080"/>
-          <rect x="3" y="6"  width="10" height="9"  fill="#c0c0c0"/>
-          <!-- Bin highlight -->
-          <rect x="3" y="6"  width="10" height="1"  fill="#dfdfdf"/>
-          <rect x="3" y="6"  width="1"  height="9"  fill="#dfdfdf"/>
-          <!-- Bin shadow -->
-          <rect x="3" y="14" width="10" height="1"  fill="#404040"/>
-          <rect x="12" y="6" width="1"  height="9"  fill="#404040"/>
-          <!-- Vertical slots (recycling lines) -->
-          <rect x="5"  y="8"  width="1" height="5"  fill="#808080"/>
-          <rect x="8"  y="8"  width="1" height="5"  fill="#808080"/>
-          <rect x="11" y="8"  width="1" height="5"  fill="#808080"/>
-          <!-- Lid -->
-          <rect x="1"  y="4"  width="14" height="2" fill="#808080"/>
-          <rect x="1"  y="4"  width="14" height="1" fill="#dfdfdf"/>
-          <!-- Handle -->
-          <rect x="6"  y="2"  width="4"  height="2" fill="#808080"/>
-          <rect x="6"  y="2"  width="4"  height="1" fill="#c0c0c0"/>
+          <!-- Bin body outer: teal-mint -->
+          <rect x="2" y="6"  width="12" height="9" fill="#60c0a0"/>
+          <!-- Bin body inner: soft mint -->
+          <rect x="3" y="6"  width="10" height="9" fill="#b0ecd4"/>
+          <!-- Bin highlight: bright mint -->
+          <rect x="3" y="6"  width="10" height="1" fill="#d8f8ec"/>
+          <rect x="3" y="6"  width="1"  height="9" fill="#d8f8ec"/>
+          <!-- Bin shadow: dark teal -->
+          <rect x="3"  y="14" width="10" height="1" fill="#40a880"/>
+          <rect x="12" y="6"  width="1"  height="9" fill="#40a880"/>
+          <!-- Slots: teal -->
+          <rect x="5"  y="8"  width="1"  height="5" fill="#50b090"/>
+          <rect x="8"  y="8"  width="1"  height="5" fill="#50b090"/>
+          <rect x="11" y="8"  width="1"  height="5" fill="#50b090"/>
+          <!-- Lid: darker mint -->
+          <rect x="1"  y="4"  width="14" height="2" fill="#70c8a8"/>
+          <rect x="1"  y="4"  width="14" height="1" fill="#c0f0dc"/>
+          <!-- Handle: mint -->
+          <rect x="6"  y="2"  width="4"  height="2" fill="#80d8b8"/>
+          <rect x="6"  y="2"  width="4"  height="1" fill="#c0f0e0"/>
         </svg>
       </div>
       <span>Recycle Bin</span>
     </div>
 
-    <!-- Notepad — pixel art document on 16×16 grid -->
+    <!-- Notepad — pastel pixel art document on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('notepad')">
       <div class="icon-img">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-          <!-- Paper -->
-          <rect x="2" y="1"  width="12" height="14" fill="#ffffff"/>
-          <!-- Paper border -->
-          <rect x="2" y="1"  width="12" height="1"  fill="#808080"/>
-          <rect x="2" y="1"  width="1"  height="14" fill="#808080"/>
-          <rect x="2" y="14" width="12" height="1"  fill="#404040"/>
-          <rect x="13" y="1" width="1"  height="14" fill="#404040"/>
-          <!-- Corner fold -->
-          <rect x="10" y="1"  width="3" height="3"  fill="#c0c0c0"/>
-          <rect x="10" y="3"  width="3" height="1"  fill="#808080"/>
-          <rect x="10" y="1"  width="1" height="3"  fill="#808080"/>
-          <!-- Red margin line -->
-          <rect x="5"  y="1"  width="1" height="13" fill="#ff8888"/>
-          <!-- Text lines -->
-          <rect x="7"  y="4"  width="5" height="1"  fill="#8888cc"/>
-          <rect x="7"  y="6"  width="5" height="1"  fill="#8888cc"/>
-          <rect x="7"  y="8"  width="5" height="1"  fill="#8888cc"/>
-          <rect x="7"  y="10" width="3" height="1"  fill="#8888cc"/>
-          <rect x="3"  y="4"  width="1" height="1"  fill="#8888cc"/>
-          <rect x="3"  y="6"  width="1" height="1"  fill="#8888cc"/>
-          <rect x="3"  y="8"  width="1" height="1"  fill="#8888cc"/>
-          <rect x="3"  y="10" width="1" height="1"  fill="#8888cc"/>
+          <!-- Paper: warm cream -->
+          <rect x="2" y="1"  width="12" height="14" fill="#fff8f4"/>
+          <!-- Paper border: soft lavender -->
+          <rect x="2" y="1"  width="12" height="1"  fill="#d0c0f0"/>
+          <rect x="2" y="1"  width="1"  height="14" fill="#d0c0f0"/>
+          <rect x="2"  y="14" width="12" height="1" fill="#b0a0d8"/>
+          <rect x="13" y="1"  width="1"  height="14" fill="#b0a0d8"/>
+          <!-- Corner fold: pale purple -->
+          <rect x="10" y="1"  width="3"  height="3" fill="#e8d8ff"/>
+          <rect x="10" y="3"  width="3"  height="1" fill="#c0b0e8"/>
+          <rect x="10" y="1"  width="1"  height="3" fill="#c0b0e8"/>
+          <!-- Pastel pink margin line -->
+          <rect x="5"  y="1"  width="1"  height="13" fill="#ffb8d0"/>
+          <!-- Text lines: lavender -->
+          <rect x="7"  y="4"  width="5"  height="1" fill="#c8a8ff"/>
+          <rect x="7"  y="6"  width="5"  height="1" fill="#c8a8ff"/>
+          <rect x="7"  y="8"  width="5"  height="1" fill="#c8a8ff"/>
+          <rect x="7"  y="10" width="3"  height="1" fill="#c8a8ff"/>
+          <rect x="3"  y="4"  width="1"  height="1" fill="#c8a8ff"/>
+          <rect x="3"  y="6"  width="1"  height="1" fill="#c8a8ff"/>
+          <rect x="3"  y="8"  width="1"  height="1" fill="#c8a8ff"/>
+          <rect x="3"  y="10" width="1"  height="1" fill="#c8a8ff"/>
         </svg>
       </div>
       <span>Notepad</span>
     </div>
 
-    <!-- My Documents — pixel art folder on 16×16 grid -->
+    <!-- My Documents — pastel yellow pixel art folder on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('explorer')">
       <div class="icon-img">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-          <!-- Folder back -->
-          <rect x="1" y="5"  width="14" height="10" fill="#c89010"/>
+          <!-- Folder back: warm golden-peach -->
+          <rect x="1" y="5"  width="14" height="10" fill="#e8b050"/>
           <!-- Folder tab -->
-          <rect x="1" y="3"  width="6"  height="3"  fill="#c89010"/>
-          <!-- Folder face -->
-          <rect x="1" y="6"  width="14" height="9"  fill="#f0c030"/>
-          <!-- Face highlight -->
-          <rect x="1" y="6"  width="14" height="1"  fill="#f8d850"/>
-          <rect x="1" y="6"  width="1"  height="9"  fill="#f8d850"/>
-          <!-- Face shadow -->
-          <rect x="1"  y="14" width="14" height="1" fill="#a07010"/>
-          <rect x="14" y="6"  width="1"  height="9" fill="#a07010"/>
-          <!-- Document inside folder -->
-          <rect x="4"  y="8"  width="8" height="5"  fill="#ffffff"/>
-          <rect x="5"  y="9"  width="5" height="1"  fill="#8888cc"/>
-          <rect x="5"  y="11" width="4" height="1"  fill="#8888cc"/>
+          <rect x="1" y="3"  width="6"  height="3"  fill="#e8b050"/>
+          <!-- Folder face: pastel lemon yellow -->
+          <rect x="1" y="6"  width="14" height="9"  fill="#ffe870"/>
+          <!-- Face highlight: pale yellow -->
+          <rect x="1" y="6"  width="14" height="1"  fill="#fff4a0"/>
+          <rect x="1" y="6"  width="1"  height="9"  fill="#fff4a0"/>
+          <!-- Face shadow: warm amber -->
+          <rect x="1"  y="14" width="14" height="1" fill="#c08030"/>
+          <rect x="14" y="6"  width="1"  height="9" fill="#c08030"/>
+          <!-- Document inside: white -->
+          <rect x="4"  y="8"  width="8"  height="5" fill="#ffffff"/>
+          <!-- Lines: lavender -->
+          <rect x="5"  y="9"  width="5"  height="1" fill="#c8a8ff"/>
+          <rect x="5"  y="11" width="4"  height="1" fill="#c8a8ff"/>
         </svg>
       </div>
       <span>My Documents</span>
