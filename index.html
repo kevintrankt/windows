@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Windows 95</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,52 +15,117 @@
   <div id="desktop">
 
     <!-- Desktop Icons -->
+    <!-- My Computer — pixel art monitor on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('mycomputer')">
       <div class="icon-img">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="4" width="24" height="18" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
-          <rect x="4" y="6" width="20" height="14" fill="#008080"/>
-          <rect x="8" y="22" width="12" height="3" fill="#808080"/>
-          <rect x="5" y="25" width="18" height="2" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <!-- Monitor body -->
+          <rect x="1" y="1" width="14" height="10" fill="#808080"/>
+          <!-- Screen bezel -->
+          <rect x="2" y="2" width="12" height="8"  fill="#404040"/>
+          <!-- Screen -->
+          <rect x="3" y="3" width="10" height="6"  fill="#0000a8"/>
+          <!-- Screen scanline highlight -->
+          <rect x="3" y="3" width="10" height="1"  fill="#4040c8"/>
+          <rect x="3" y="5" width="10" height="1"  fill="#3030b8"/>
+          <!-- Power light -->
+          <rect x="12" y="9" width="2" height="1"  fill="#00e800"/>
+          <!-- Monitor top highlight -->
+          <rect x="1" y="1" width="14" height="1"  fill="#c0c0c0"/>
+          <rect x="1" y="1" width="1"  height="10" fill="#c0c0c0"/>
+          <!-- Monitor shadow -->
+          <rect x="1" y="10" width="14" height="1" fill="#404040"/>
+          <rect x="14" y="1" width="1"  height="10" fill="#404040"/>
+          <!-- Stand neck -->
+          <rect x="6" y="11" width="4" height="2"  fill="#808080"/>
+          <!-- Stand base -->
+          <rect x="4" y="13" width="8" height="2"  fill="#c0c0c0"/>
+          <rect x="4" y="13" width="8" height="1"  fill="#dfdfdf"/>
+          <rect x="4" y="14" width="8" height="1"  fill="#808080"/>
         </svg>
       </div>
       <span>My Computer</span>
     </div>
 
+    <!-- Recycle Bin — pixel art bin on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('recycle')">
       <div class="icon-img">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 4 L20 10 L18 10 L18 24 L14 24 L14 10 L12 10 Z" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
-          <path d="M8 12 L6 16 L10 14 Z" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
-          <path d="M24 12 L26 16 L22 14 Z" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
-          <ellipse cx="16" cy="26" rx="10" ry="3" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <!-- Bin body -->
+          <rect x="2" y="6"  width="12" height="9"  fill="#808080"/>
+          <rect x="3" y="6"  width="10" height="9"  fill="#c0c0c0"/>
+          <!-- Bin highlight -->
+          <rect x="3" y="6"  width="10" height="1"  fill="#dfdfdf"/>
+          <rect x="3" y="6"  width="1"  height="9"  fill="#dfdfdf"/>
+          <!-- Bin shadow -->
+          <rect x="3" y="14" width="10" height="1"  fill="#404040"/>
+          <rect x="12" y="6" width="1"  height="9"  fill="#404040"/>
+          <!-- Vertical slots (recycling lines) -->
+          <rect x="5"  y="8"  width="1" height="5"  fill="#808080"/>
+          <rect x="8"  y="8"  width="1" height="5"  fill="#808080"/>
+          <rect x="11" y="8"  width="1" height="5"  fill="#808080"/>
+          <!-- Lid -->
+          <rect x="1"  y="4"  width="14" height="2" fill="#808080"/>
+          <rect x="1"  y="4"  width="14" height="1" fill="#dfdfdf"/>
+          <!-- Handle -->
+          <rect x="6"  y="2"  width="4"  height="2" fill="#808080"/>
+          <rect x="6"  y="2"  width="4"  height="1" fill="#c0c0c0"/>
         </svg>
       </div>
       <span>Recycle Bin</span>
     </div>
 
+    <!-- Notepad — pixel art document on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('notepad')">
       <div class="icon-img">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="2" width="20" height="26" fill="#fff" stroke="#000" stroke-width="1"/>
-          <rect x="6" y="2" width="20" height="4" fill="#000080"/>
-          <line x1="9" y1="10" x2="23" y2="10" stroke="#000" stroke-width="1"/>
-          <line x1="9" y1="13" x2="23" y2="13" stroke="#000" stroke-width="1"/>
-          <line x1="9" y1="16" x2="23" y2="16" stroke="#000" stroke-width="1"/>
-          <line x1="9" y1="19" x2="20" y2="19" stroke="#000" stroke-width="1"/>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <!-- Paper -->
+          <rect x="2" y="1"  width="12" height="14" fill="#ffffff"/>
+          <!-- Paper border -->
+          <rect x="2" y="1"  width="12" height="1"  fill="#808080"/>
+          <rect x="2" y="1"  width="1"  height="14" fill="#808080"/>
+          <rect x="2" y="14" width="12" height="1"  fill="#404040"/>
+          <rect x="13" y="1" width="1"  height="14" fill="#404040"/>
+          <!-- Corner fold -->
+          <rect x="10" y="1"  width="3" height="3"  fill="#c0c0c0"/>
+          <rect x="10" y="3"  width="3" height="1"  fill="#808080"/>
+          <rect x="10" y="1"  width="1" height="3"  fill="#808080"/>
+          <!-- Red margin line -->
+          <rect x="5"  y="1"  width="1" height="13" fill="#ff8888"/>
+          <!-- Text lines -->
+          <rect x="7"  y="4"  width="5" height="1"  fill="#8888cc"/>
+          <rect x="7"  y="6"  width="5" height="1"  fill="#8888cc"/>
+          <rect x="7"  y="8"  width="5" height="1"  fill="#8888cc"/>
+          <rect x="7"  y="10" width="3" height="1"  fill="#8888cc"/>
+          <rect x="3"  y="4"  width="1" height="1"  fill="#8888cc"/>
+          <rect x="3"  y="6"  width="1" height="1"  fill="#8888cc"/>
+          <rect x="3"  y="8"  width="1" height="1"  fill="#8888cc"/>
+          <rect x="3"  y="10" width="1" height="1"  fill="#8888cc"/>
         </svg>
       </div>
       <span>Notepad</span>
     </div>
 
+    <!-- My Documents — pixel art folder on 16×16 grid -->
     <div class="desktop-icon" ondblclick="openWindow('explorer')">
       <div class="icon-img">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="10" width="28" height="18" fill="#c0c0c0" stroke="#000" stroke-width="1"/>
-          <rect x="2" y="6" width="12" height="5" fill="#ffff00" stroke="#000" stroke-width="1"/>
-          <rect x="4" y="14" width="10" height="8" fill="#ffff00" stroke="#808080" stroke-width="0.5"/>
-          <rect x="16" y="14" width="10" height="8" fill="#ffff00" stroke="#808080" stroke-width="0.5"/>
-          <rect x="4" y="24" width="10" height="2" fill="#808080"/>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <!-- Folder back -->
+          <rect x="1" y="5"  width="14" height="10" fill="#c89010"/>
+          <!-- Folder tab -->
+          <rect x="1" y="3"  width="6"  height="3"  fill="#c89010"/>
+          <!-- Folder face -->
+          <rect x="1" y="6"  width="14" height="9"  fill="#f0c030"/>
+          <!-- Face highlight -->
+          <rect x="1" y="6"  width="14" height="1"  fill="#f8d850"/>
+          <rect x="1" y="6"  width="1"  height="9"  fill="#f8d850"/>
+          <!-- Face shadow -->
+          <rect x="1"  y="14" width="14" height="1" fill="#a07010"/>
+          <rect x="14" y="6"  width="1"  height="9" fill="#a07010"/>
+          <!-- Document inside folder -->
+          <rect x="4"  y="8"  width="8" height="5"  fill="#ffffff"/>
+          <rect x="5"  y="9"  width="5" height="1"  fill="#8888cc"/>
+          <rect x="5"  y="11" width="4" height="1"  fill="#8888cc"/>
         </svg>
       </div>
       <span>My Documents</span>

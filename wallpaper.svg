@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 50" shape-rendering="crispEdges">
+
+  <!-- Sky (dark top → lighter bottom) -->
+  <rect x="0"  y="0"  width="80" height="10" fill="#1e3c98"/>
+  <rect x="0"  y="10" width="80" height="10" fill="#2850b0"/>
+  <rect x="0"  y="20" width="80" height="10" fill="#3060c0"/>
+  <rect x="0"  y="30" width="80" height="10" fill="#4070c8"/>
+  <rect x="0"  y="40" width="80" height="10" fill="#4878d0"/>
+
+  <!-- Pixel sun (cross shape) -->
+  <rect x="63" y="4"  width="4" height="8" fill="#f8d020"/>
+  <rect x="61" y="6"  width="8" height="4" fill="#f8d020"/>
+  <!-- Sun glow -->
+  <rect x="64" y="5"  width="2" height="6" fill="#fff880"/>
+  <rect x="62" y="7"  width="6" height="2" fill="#fff880"/>
+
+  <!-- Cloud 1 (chunky pixel blocks) -->
+  <rect x="8"  y="7"  width="2" height="2" fill="#ccd8f8"/>
+  <rect x="8"  y="9"  width="14" height="2" fill="#e8eeff"/>
+  <rect x="6"  y="11" width="18" height="4" fill="#e8eeff"/>
+  <rect x="10" y="7"  width="6"  height="2" fill="#e8eeff"/>
+  <rect x="13" y="5"  width="4"  height="2" fill="#e8eeff"/>
+  <!-- Cloud 1 shadow -->
+  <rect x="7"  y="15" width="16" height="2" fill="#b0c0e8"/>
+
+  <!-- Cloud 2 -->
+  <rect x="44" y="12" width="10" height="2" fill="#d8e4f8"/>
+  <rect x="42" y="14" width="14" height="4" fill="#d8e4f8"/>
+  <rect x="46" y="10" width="6"  height="2" fill="#d8e4f8"/>
+  <!-- Cloud 2 shadow -->
+  <rect x="43" y="18" width="12" height="1" fill="#a8b8e0"/>
+
+  <!-- Pixel birds -->
+  <rect x="28" y="9"  width="2"  height="1" fill="#102888"/>
+  <rect x="32" y="7"  width="2"  height="1" fill="#102888"/>
+  <rect x="52" y="14" width="2"  height="1" fill="#102888"/>
+
+  <!-- ── Back hills (dark green, staircase edges) ── -->
+  <!-- Fill base -->
+  <rect x="0"  y="34" width="80" height="16" fill="#1a5c0e"/>
+
+  <!-- Left back hill staircase -->
+  <rect x="0"  y="32" width="26" height="2" fill="#1a5c0e"/>
+  <rect x="0"  y="30" width="18" height="2" fill="#1a5c0e"/>
+  <rect x="0"  y="28" width="12" height="2" fill="#1a5c0e"/>
+  <rect x="0"  y="26" width="7"  height="2" fill="#1a5c0e"/>
+  <rect x="0"  y="24" width="3"  height="2" fill="#1a5c0e"/>
+
+  <!-- Right back hill staircase -->
+  <rect x="54" y="32" width="26" height="2" fill="#1a5c0e"/>
+  <rect x="60" y="30" width="20" height="2" fill="#1a5c0e"/>
+  <rect x="65" y="28" width="15" height="2" fill="#1a5c0e"/>
+  <rect x="69" y="26" width="11" height="2" fill="#1a5c0e"/>
+  <rect x="73" y="24" width="7"  height="2" fill="#1a5c0e"/>
+  <rect x="76" y="22" width="4"  height="2" fill="#1a5c0e"/>
+
+  <!-- Hill highlight (top edge row) -->
+  <rect x="0"  y="34" width="80" height="1" fill="#2a8018"/>
+  <rect x="0"  y="32" width="26" height="1" fill="#2a8018"/>
+  <rect x="54" y="32" width="26" height="1" fill="#2a8018"/>
+
+  <!-- ── Front hill (bright green, staircase) ── -->
+  <rect x="0"  y="42" width="80" height="8" fill="#2ea016"/>
+
+  <!-- Front hill staircase steps -->
+  <rect x="0"  y="40" width="80" height="2" fill="#2ea016"/>
+  <rect x="6"  y="38" width="68" height="2" fill="#2ea016"/>
+  <rect x="14" y="36" width="52" height="2" fill="#2ea016"/>
+  <rect x="22" y="34" width="36" height="2" fill="#2ea016"/>
+  <rect x="28" y="32" width="24" height="2" fill="#2ea016"/>
+  <rect x="32" y="30" width="16" height="2" fill="#2ea016"/>
+  <rect x="36" y="28" width="8"  height="2" fill="#2ea016"/>
+  <rect x="38" y="26" width="4"  height="2" fill="#2ea016"/>
+
+  <!-- Front hill top highlight -->
+  <rect x="0"  y="40" width="80" height="1" fill="#50d030"/>
+  <rect x="6"  y="38" width="68" height="1" fill="#50d030"/>
+
+  <!-- Ground shadow band at bottom -->
+  <rect x="0"  y="47" width="80" height="3" fill="#147a0a"/>
+
+  <!-- Small pixel flowers/details on front hill -->
+  <rect x="12" y="41" width="2" height="2" fill="#f83838"/>
+  <rect x="11" y="40" width="4" height="1" fill="#f83838"/>
+  <rect x="12" y="43" width="2" height="2" fill="#288010"/>
+
+  <rect x="55" y="42" width="2" height="2" fill="#f8e020"/>
+  <rect x="54" y="41" width="4" height="1" fill="#f8e020"/>
+  <rect x="55" y="44" width="2" height="2" fill="#288010"/>
+
+  <rect x="33" y="43" width="2" height="2" fill="#f870f0"/>
+  <rect x="32" y="42" width="4" height="1" fill="#f870f0"/>
+  <rect x="33" y="45" width="2" height="2" fill="#288010"/>
+
+</svg>

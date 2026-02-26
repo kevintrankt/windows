@@ -1,53 +1,56 @@
+/* ── Pixel Font ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 /* ── Reset & Base ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --win-gray:       #c0c0c0;
-  --win-dark-gray:  #808080;
-  --win-white:      #ffffff;
-  --win-black:      #000000;
-  --win-navy:       #000080;
-  --win-teal:       #008080;
-  --win-active-title: linear-gradient(to right, #000080, #1084d0);
-  --win-inactive-title: linear-gradient(to right, #808080, #b0b0b0);
+  --win-gray:      #c0c0c0;
+  --win-dark-gray: #808080;
+  --win-white:     #ffffff;
+  --win-black:     #000000;
+  --win-navy:      #000080;
 
-  /* Bevelled border helpers */
-  --raised: inset -1px -1px 0 #000, inset 1px 1px 0 #fff,
-            inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
-  --sunken: inset 1px 1px 0 #000, inset -1px -1px 0 #fff,
-            inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
+  /* Pixel-art 4-layer bevel (twice the depth of classic Win95) */
+  --raised:
+    inset -2px -2px 0 #000,
+    inset  2px  2px 0 #fff,
+    inset -4px -4px 0 #808080,
+    inset  4px  4px 0 #dfdfdf;
+
+  --sunken:
+    inset  2px  2px 0 #000,
+    inset -2px -2px 0 #fff,
+    inset  4px  4px 0 #808080,
+    inset -4px -4px 0 #dfdfdf;
+
+  /* Hard pixel drop-shadow used on windows */
+  --px-shadow: 6px 6px 0 #000;
 }
 
 html, body {
   width: 100%; height: 100%;
   overflow: hidden;
-  font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
-  font-size: 11px;
-  background: var(--win-teal);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  background: #008080;
   cursor: default;
   user-select: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .hidden { display: none !important; }
 
-/* ── Wallpaper / Desktop ──────────────────────────────────── */
+/* ── Desktop / Wallpaper ──────────────────────────────────── */
 #desktop {
   position: fixed;
-  inset: 0 0 28px 0;
-  background-color: #008080;
-  background-image:
-    /* Subtle scanline texture */
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(0,0,0,0.03) 3px,
-      rgba(0,0,0,0.03) 4px
-    ),
-    /* Classic Windows 95 hills SVG as data URI background */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%234aa8d8'/%3E%3Cstop offset='1' stop-color='%2387ceeb'/%3E%3C/linearGradient%3E%3ClinearGradient id='hill1' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2356a832'/%3E%3Cstop offset='1' stop-color='%23388a1a'/%3E%3C/linearGradient%3E%3ClinearGradient id='hill2' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2366bb3c'/%3E%3Cstop offset='1' stop-color='%2344961e'/%3E%3C/linearGradient%3E%3ClinearGradient id='ground' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2378c83e'/%3E%3Cstop offset='1' stop-color='%2350a020'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23sky)'/%3E%3Cellipse cx='80' cy='200' rx='150' ry='80' fill='url(%23hill1)'/%3E%3Cellipse cx='320' cy='210' rx='180' ry='90' fill='url(%23hill2)'/%3E%3Cellipse cx='200' cy='230' rx='300' ry='100' fill='url(%23ground)'/%3E%3Ccircle cx='80' cy='60' r='30' fill='%23fff' opacity='0.8'/%3E%3Cellipse cx='110' cy='55' rx='40' ry='22' fill='%23fff' opacity='0.9'/%3E%3Ccircle cx='140' cy='62' r='22' fill='%23fff' opacity='0.7'/%3E%3Ccircle cx='280' cy='45' r='20' fill='%23fff' opacity='0.7'/%3E%3Cellipse cx='310' cy='40' rx='30' ry='16' fill='%23fff' opacity='0.85'/%3E%3Ccircle cx='335' cy='47' r='16' fill='%23fff' opacity='0.7'/%3E%3C/svg%3E");
-  background-size: auto, cover;
-  background-position: top left, center center;
+  inset: 0 0 42px 0;        /* leave room for taskbar */
+  background-image: url('./wallpaper.svg');
+  background-size: cover;
+  background-position: center bottom;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 /* ── Desktop Icons ────────────────────────────────────────── */
@@ -56,83 +59,100 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 72px;
+  width: 68px;
   padding: 4px;
-  gap: 3px;
+  gap: 5px;
   cursor: pointer;
 }
-.desktop-icon:nth-child(1) { left: 10px; top: 10px; }
-.desktop-icon:nth-child(2) { left: 10px; top: 90px; }
-.desktop-icon:nth-child(3) { left: 10px; top: 170px; }
-.desktop-icon:nth-child(4) { left: 10px; top: 250px; }
+.desktop-icon:nth-child(1) { left: 12px; top: 12px; }
+.desktop-icon:nth-child(2) { left: 12px; top: 104px; }
+.desktop-icon:nth-child(3) { left: 12px; top: 196px; }
+.desktop-icon:nth-child(4) { left: 12px; top: 288px; }
 
 .desktop-icon .icon-img {
-  width: 32px; height: 32px;
+  width: 40px; height: 40px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
-.desktop-icon .icon-img svg { width: 100%; height: 100%; }
+.desktop-icon .icon-img svg {
+  width: 100%; height: 100%;
+  shape-rendering: crispEdges;
+}
 .desktop-icon span {
   text-align: center;
   color: #fff;
-  font-size: 11px;
-  text-shadow: 1px 1px 1px #000;
-  line-height: 1.2;
+  font-size: 7px;
+  line-height: 1.6;
   word-break: break-word;
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 #000;
+  letter-spacing: 0;
+}
+.desktop-icon:hover {
+  outline: 2px dotted #fff;
 }
 .desktop-icon:hover span {
   background: var(--win-navy);
-  outline: 1px dotted #fff;
 }
 
 /* ── Taskbar ──────────────────────────────────────────────── */
 #taskbar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  height: 28px;
+  height: 42px;
   background: var(--win-gray);
   box-shadow: var(--raised);
+  /* Extra hard top border for pixel art look */
+  border-top: 2px solid #fff;
+  outline: 2px solid #000;
   display: flex;
   align-items: center;
-  padding: 2px 3px;
-  gap: 3px;
+  padding: 4px 4px;
+  gap: 4px;
   z-index: 9000;
 }
 
 #taskbar-divider {
-  width: 2px; height: 22px;
-  box-shadow: inset 1px 0 0 #fff, inset -1px 0 0 #808080;
+  width: 4px; height: 28px;
+  box-shadow: inset 2px 0 0 #fff, inset -2px 0 0 #808080;
   margin: 0 2px;
+  flex-shrink: 0;
 }
 
 #open-windows {
   flex: 1;
   display: flex;
-  gap: 2px;
+  gap: 3px;
   overflow: hidden;
+  height: 100%;
+  align-items: center;
 }
 
 /* Start Button */
 #start-btn {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 1px 6px 1px 4px;
-  height: 22px;
+  gap: 5px;
+  padding: 2px 8px 2px 6px;
+  height: 32px;
   background: var(--win-gray);
   border: none;
   box-shadow: var(--raised);
   cursor: pointer;
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: bold;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  font-weight: normal;
   white-space: nowrap;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 #start-btn:active,
 #start-btn.active {
   box-shadow: var(--sunken);
-  padding: 2px 5px 0px 5px;
+  padding-top: 3px;
+  padding-left: 7px;
 }
 .start-logo {
-  width: 16px; height: 16px;
+  width: 20px; height: 20px;
   image-rendering: pixelated;
 }
 
@@ -140,21 +160,22 @@ html, body {
 .taskbar-btn {
   display: flex;
   align-items: center;
-  gap: 4px;
-  min-width: 100px;
-  max-width: 160px;
-  height: 22px;
-  padding: 1px 6px;
+  gap: 5px;
+  min-width: 110px;
+  max-width: 150px;
+  height: 32px;
+  padding: 2px 6px;
   background: var(--win-gray);
   border: none;
   box-shadow: var(--raised);
   cursor: pointer;
-  font-family: inherit;
-  font-size: 11px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  letter-spacing: 0;
 }
 .taskbar-btn:active,
 .taskbar-btn.active {
@@ -165,87 +186,106 @@ html, body {
 #system-tray {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 0 4px;
-  height: 22px;
+  gap: 5px;
+  padding: 0 6px;
+  height: 32px;
   box-shadow: var(--sunken);
   background: var(--win-gray);
+  flex-shrink: 0;
 }
-.tray-icon { font-size: 14px; cursor: pointer; }
+.tray-icon {
+  font-size: 14px;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
 #clock {
-  font-size: 11px;
-  min-width: 44px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  min-width: 52px;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 /* ── Start Menu ───────────────────────────────────────────── */
 #start-menu {
   position: fixed;
-  bottom: 28px;
+  bottom: 42px;
   left: 0;
-  width: 200px;
+  width: 230px;
   background: var(--win-gray);
-  box-shadow: var(--raised);
+  box-shadow: var(--raised), var(--px-shadow);
   display: flex;
   flex-direction: row;
   z-index: 9500;
+  outline: 2px solid #000;
 }
 
 #start-menu-sidebar {
-  width: 22px;
-  background: linear-gradient(to top, #000080, #808080);
+  width: 26px;
+  background: linear-gradient(to top, #000080 0%, #000080 60%, #606060 100%);
   color: #fff;
-  font-size: 14px;
-  font-weight: bold;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 6px;
-  letter-spacing: 1px;
+  padding-bottom: 8px;
+  letter-spacing: 2px;
+  image-rendering: pixelated;
 }
 
 #start-menu-items {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 2px 0;
+  padding: 3px 0;
 }
 
 .start-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 6px 4px 8px;
+  padding: 6px 8px 6px 10px;
   cursor: pointer;
+  font-size: 8px;
+  line-height: 1.6;
 }
 .start-item:hover {
   background: var(--win-navy);
   color: #fff;
 }
-.start-item-icon { font-size: 16px; width: 20px; text-align: center; }
+.start-item-icon {
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+  image-rendering: pixelated;
+}
 .start-item-text {
   flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.start-item-arrow { font-size: 7px; }
 .start-separator {
-  height: 1px;
-  margin: 3px 4px;
+  height: 2px;
+  margin: 3px 6px;
   background: var(--win-dark-gray);
-  box-shadow: 0 1px 0 #fff;
+  box-shadow: 0 2px 0 #fff;
 }
 
 /* ── Windows ──────────────────────────────────────────────── */
 .window {
   position: absolute;
-  min-width: 280px;
-  min-height: 180px;
+  min-width: 300px;
+  min-height: 200px;
   background: var(--win-gray);
-  box-shadow: var(--raised);
+  /* raised border + hard pixel drop-shadow */
+  box-shadow: var(--raised), var(--px-shadow);
+  outline: 2px solid #000;
   display: flex;
   flex-direction: column;
   z-index: 100;
@@ -256,7 +296,8 @@ html, body {
   position: fixed !important;
   left: 0 !important; top: 0 !important;
   width: 100vw !important;
-  height: calc(100vh - 28px) !important;
+  height: calc(100vh - 42px) !important;
+  box-shadow: var(--raised) !important;
   resize: none;
 }
 .window.focused { z-index: 500; }
@@ -266,26 +307,42 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 18px;
-  padding: 1px 2px;
-  background: var(--win-active-title);
+  height: 22px;
+  padding: 2px 3px;
+  /* Pixel-art stepped title bar: three distinct colour bands */
+  background:
+    linear-gradient(to right,
+      #000080 0%,   #000080 20%,
+      #0038a8 20%,  #0038a8 55%,
+      #1068c0 55%,  #1068c0 80%,
+      #1880d8 80%,  #1880d8 100%
+    );
   cursor: move;
   flex-shrink: 0;
+  image-rendering: pixelated;
 }
 .window:not(.focused) .title-bar {
-  background: var(--win-inactive-title);
+  background:
+    linear-gradient(to right,
+      #606060 0%, #606060 30%,
+      #909090 30%, #909090 100%
+    );
 }
 .title-bar-left {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   color: #fff;
-  font-weight: bold;
-  font-size: 11px;
+  font-size: 8px;
   overflow: hidden;
   white-space: nowrap;
+  /* Pixel text shadow for legibility on gradient */
+  text-shadow: 1px 1px 0 #000;
 }
-.title-icon { font-size: 12px; }
+.title-icon {
+  font-size: 14px;
+  image-rendering: pixelated;
+}
 
 .title-bar-buttons {
   display: flex;
@@ -293,12 +350,12 @@ html, body {
   flex-shrink: 0;
 }
 .win-btn {
-  width: 16px; height: 14px;
+  width: 18px; height: 16px;
   background: var(--win-gray);
   border: none;
   box-shadow: var(--raised);
-  font-size: 9px;
-  font-family: inherit;
+  font-size: 8px;
+  font-family: 'Press Start 2P', monospace;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -307,19 +364,19 @@ html, body {
   line-height: 1;
 }
 .win-btn:active { box-shadow: var(--sunken); }
-.close-btn { font-size: 10px; font-weight: bold; }
+.close-btn { font-size: 9px; }
 
 /* Menu Bar */
 .menu-bar {
   display: flex;
-  gap: 0;
-  padding: 1px 2px;
-  font-size: 11px;
+  padding: 2px 3px;
+  font-size: 8px;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--win-dark-gray);
+  border-bottom: 2px solid var(--win-dark-gray);
+  box-shadow: 0 2px 0 #fff;
 }
 .menu-bar span {
-  padding: 1px 6px;
+  padding: 2px 8px;
   cursor: pointer;
 }
 .menu-bar span:hover {
@@ -333,51 +390,53 @@ html, body {
   background: #fff;
   box-shadow: var(--sunken);
   overflow: auto;
-  margin: 2px;
+  margin: 3px;
 }
 
-/* Notepad textarea */
+/* Notepad */
 .notepad-content { margin: 0; }
 .notepad-content textarea {
   width: 100%; height: 100%;
-  min-height: 200px;
-  border: none;
-  outline: none;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  padding: 4px;
+  min-height: 220px;
+  border: none; outline: none;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 2;
+  padding: 6px;
   resize: none;
   background: #fff;
   cursor: text;
   user-select: text;
 }
 
-/* File Grid (My Computer) */
+/* File Grid */
 .file-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 12px;
+  gap: 18px;
+  padding: 14px;
 }
 .file-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  width: 60px;
+  gap: 5px;
+  width: 64px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 7px;
   text-align: center;
+  line-height: 1.6;
 }
 .file-item:hover { background: rgba(0,0,128,0.15); }
-.file-icon { font-size: 28px; }
+.file-icon { font-size: 28px; image-rendering: pixelated; }
 
-/* File List (Explorer) */
+/* File List */
 .file-list { padding: 4px; }
 .file-list-item {
-  padding: 3px 8px;
+  padding: 5px 10px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 8px;
+  line-height: 2;
 }
 .file-list-item:hover {
   background: var(--win-navy);
@@ -386,11 +445,12 @@ html, body {
 
 /* Status Bar */
 .status-bar {
-  padding: 1px 4px;
-  font-size: 11px;
+  padding: 2px 5px;
+  font-size: 7px;
   box-shadow: var(--sunken);
-  margin: 2px;
+  margin: 3px;
   flex-shrink: 0;
+  line-height: 2;
 }
 
 /* ── Dialogs ──────────────────────────────────────────────── */
@@ -398,7 +458,7 @@ html, body {
 #run-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -407,7 +467,8 @@ html, body {
 
 .win-dialog {
   background: var(--win-gray);
-  box-shadow: var(--raised);
+  box-shadow: var(--raised), var(--px-shadow);
+  outline: 2px solid #000;
   min-width: 320px;
 }
 
@@ -416,52 +477,56 @@ html, body {
   align-items: flex-start;
   gap: 16px;
   padding: 16px;
-  font-size: 11px;
+  font-size: 8px;
+  line-height: 2;
 }
-.dialog-icon { font-size: 48px; }
+.dialog-icon { font-size: 44px; image-rendering: pixelated; }
 .dialog-text { flex: 1; }
-.dialog-text p { margin-bottom: 10px; }
+.dialog-text p { margin-bottom: 12px; }
 .dialog-radio {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 .dialog-radio label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer;
+  font-size: 8px;
 }
 
 .dialog-footer {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 8px 16px 12px;
-  border-top: 1px solid var(--win-dark-gray);
+  padding: 8px 16px 14px;
+  border-top: 2px solid var(--win-dark-gray);
+  box-shadow: inset 0 2px 0 #fff;
 }
 .dialog-btn {
-  min-width: 72px;
-  height: 23px;
-  padding: 0 12px;
+  min-width: 80px;
+  height: 28px;
+  padding: 0 10px;
   background: var(--win-gray);
   border: none;
   box-shadow: var(--raised);
-  font-family: inherit;
-  font-size: 11px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
   cursor: pointer;
+  line-height: 1;
 }
 .dialog-btn:active { box-shadow: var(--sunken); }
-.dialog-btn:first-child { outline: 1px solid #000; }
+.dialog-btn:first-child { outline: 2px solid #000; }
 
 .win-input {
-  height: 20px;
+  height: 22px;
   border: none;
   box-shadow: var(--sunken);
   background: #fff;
-  font-family: inherit;
-  font-size: 11px;
-  padding: 1px 3px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 2px 4px;
   user-select: text;
 }
 
@@ -471,21 +536,26 @@ html, body {
   inset: 0;
   background: #0000aa;
   color: #fff;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
   z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 48px;
+  image-rendering: pixelated;
 }
 .bsod-inner {
-  max-width: 640px;
-  line-height: 1.8;
+  max-width: 680px;
+  line-height: 2.2;
+  border: 4px solid #fff;
+  padding: 32px 40px;
+  box-shadow: 6px 6px 0 #fff;
 }
+.bsod-inner p { margin-bottom: 4px; }
 
-/* ── Scrollbars ───────────────────────────────────────────── */
-::-webkit-scrollbar { width: 16px; height: 16px; }
+/* ── Pixel-art Scrollbars ─────────────────────────────────── */
+::-webkit-scrollbar { width: 18px; height: 18px; }
 ::-webkit-scrollbar-track {
   background: var(--win-gray);
   box-shadow: var(--sunken);
@@ -493,11 +563,17 @@ html, body {
 ::-webkit-scrollbar-thumb {
   background: var(--win-gray);
   box-shadow: var(--raised);
-  min-height: 20px;
+  min-height: 24px;
 }
 ::-webkit-scrollbar-button {
   background: var(--win-gray);
   box-shadow: var(--raised);
-  height: 16px; width: 16px;
+  height: 18px; width: 18px;
   display: block;
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: var(--win-navy);
+  color: #fff;
 }
